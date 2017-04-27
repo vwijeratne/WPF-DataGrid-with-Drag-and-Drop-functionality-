@@ -1,12 +1,36 @@
-﻿<Window x:Class="SampleDragAndDropEnabledGrid.MainWindow"
+﻿<Window x:Name="MainWindow1" x:Class="SampleDragAndDropEnabledGrid.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SampleDragAndDropEnabledGrid"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Irrigation Invoicins System" Height="350" Width="525">
+    <Window.Resources>
+        <DataGridTemplateColumn x:Key="dgt" Header="Item Image" Width="50">
+            <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Column1}" />
+                </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+    </Window.Resources>
+    <Grid Name="grid1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="442*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Name="MainGrid" HorizontalAlignment="Left" Height="280" Margin="36.053,39,0,0" VerticalAlignment="Top" Width="406" AllowDrop="True" Drop="MainGrid_Drop" Grid.Column="1" />
+
+        <Image Source="pack://application:,,,/Images/part1.jpe" 
+               HorizontalAlignment="Left" Height="41" Margin="39,58,0,0" VerticalAlignment="Top" Width="41" Name="Part1" MouseMove="Part1_MouseMove" AllowDrop="True" Grid.ColumnSpan="2"/>
+        <Image Source="pack://application:,,,/Images/part2.jpe" 
+               HorizontalAlignment="Left" Height="41" Margin="39,120,0,0" VerticalAlignment="Top" Width="41" Name="Part2" MouseMove="Part2_MouseMove" Grid.ColumnSpan="2" />
+        <Image Source="pack://application:,,,/Images/part3.jpe"
+               HorizontalAlignment="Left" Height="41" Margin="39,190,0,0" VerticalAlignment="Top" Width="41" Name="Part3" MouseMove="Part3_MouseMove" Grid.ColumnSpan="2" />
+        <Image Source="pack://application:,,,/Images/part4.jpe" 
+               HorizontalAlignment="Left" Height="41" Margin="39,260,0,0" VerticalAlignment="Top" Width="41" Name="Part4" MouseMove="Part4_MouseMove" Grid.ColumnSpan="2" />
+        <Label Content="Drag and drop any item you want to add to the bill" HorizontalAlignment="Left" Margin="83,15,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+
     </Grid>
 </Window>
